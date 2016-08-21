@@ -232,7 +232,7 @@ class Service(Base):
         pidfile = open(pidpath, 'w')
         pidfile.write(str(pid))
         pidfile.close()
-
+        # TODO: is this still needed??
         time.sleep(0.5)
 
         # wait until we can connect to the master endpoint

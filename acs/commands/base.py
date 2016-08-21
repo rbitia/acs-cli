@@ -95,7 +95,14 @@ class Base(object):
     result = self.executeOnMaster(sshCmd)
 
     return result
-
+  def executeInBackgroundOnAgent(self, cmd, ip):
+     try: 
+       pid = os.fork()
+       return pid
+     except OSERROR as e:
+       msg = "Unable to create forked process"
+       return msg
+     executeOnAgent(self, cmd, ip)
   def executeOnMaster(self, cmd):
     """
     Execute command on the current master leader
@@ -119,7 +126,7 @@ class Base(object):
       
       result = ""
       for line in stdout.read().splitlines():
-        self.log.debug(line.decude("utf-8"))
+        self.log.debug(line.decode("utf-8"))
         result = result + line.decode("utf-8") + "\n"
       for line in stderr.read().splitlines():
         self.log.error(line.decode("utf-8"))

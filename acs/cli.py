@@ -16,6 +16,7 @@ Commands:
   docker     Send docker commands to a Docker Swarm cluster
   afs        Add the Azure Files Docker volume driver to each agent
   oms        Add or configure Operational Management Suite monitoring
+  elk        Add or configure Elk Stack monitoring with Dockerbeat
 
 See `acs <command> --help` for information on a specific command.
 
